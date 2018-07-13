@@ -1,20 +1,30 @@
 :root {
     --darkGray : #2a2a2a;
-    --darkerGray : #1b1b1d;
-    --ligthGray : #222225; 
+    --darkerGray : #101012;
+    --textGray : rgba(50, 50, 50, 0.3); 
 }
     
 body {
     background-color: var(--darkGray);
-    color: var(--ligthGray);
-    font-size: 2vw;
-    font-weight: bold;
+    color: var(--textGray);
+    font-size: 3vw;
+    font-weight: bolder;
     font-family: 'Courier New', Courier, monospace;
-    margin : 0;
+    margin: 0;
 }
 
 header {
     background-color: var(--darkerGray);
-    color: var(--ligthGray);
-    margin : 0;
+    color: var(--textGray);    
+    margin: 0;        
+    text-shadow: -1px -1px 3px rgba(0,0,0,0.5);   
+}
+
+#letters {
+    line-height: 2vw;
+}
+
+#letters > td {
+    margin: 0;    
+    padding: 0;        
 }
