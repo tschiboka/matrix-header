@@ -27,7 +27,13 @@ function createMatrix(row,col,tableId,fixedText) {
         tableBody.appendChild(tableRow);            
         matrix.push(matrixRow);
     } // end of outer for    
-    document.getElementById(tableId).appendChild(tableBody);          
-    console.log(JSON.stringify(matrix));   
-    
+    document.getElementById(tableId).appendChild(tableBody);             
 } // end of createMatrix
+
+function headerStart() {
+    let count = 0;
+    var timer = setInterval(()=>{
+        console.log(++count);
+        if (count >= 10) clearTimeout(timer);
+    },100);
+} // end of headerStart
