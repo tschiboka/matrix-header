@@ -1,7 +1,8 @@
 :root {
     --darkGray : #2a2a2a;
     --darkerGray : #101012;
-    --textGray : rgba(50, 50, 50, 0.3); 
+    --highLight : #a5c5de;
+    --textGray : rgba(50, 50, 50, 0.3);     
 }
     
 body {

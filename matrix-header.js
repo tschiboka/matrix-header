@@ -30,10 +30,21 @@ function createMatrix(row,col,tableId,fixedText) {
     document.getElementById(tableId).appendChild(tableBody);             
 } // end of createMatrix
 
-function headerStart() {
+function headerStart() {    
     let count = 0;
-    var timer = setInterval(()=>{
-        console.log(++count);
-        if (count >= 10) clearTimeout(timer);
-    },100);
+    function checkNext() {                
+        const findFirstNotEmpty=()=>matrix.findIndex(e=>e.match(/\.+/g).length!==1);  // skip empty rows
+        if (findFirstNotEmpty()===-1) return false;  
+        const lastValidChar=()=>matrix[findFirstNotEmpty()].split("").map(e=>e==".").lastIndexOf(false), // search for the last index of valid character in the non empty row                    
+              lights=(x,y,onOff,el=document.getElementById(`cell${x}_${y<0?0:y}`))=>onOff?el.style.color="#a5c5de":el.style.color="rgba(50, 50, 50, 0.3)";
+        lights(findFirstNotEmpty(),count-1,false);
+        lights(findFirstNotEmpty(),count,true);
+        if (count==lastValidChar()){
+            count=0; 
+            matrix[findFirstNotEmpty()]=matrix[findFirstNotEmpty()].replace(/[^.]+/g,e=>e.substring(0,e.length-1)+".");
+        }
+        else ++count;        
+        return true;
+    } // end of checkNext
+    var timer = setInterval(()=>{ if (!checkNext()) clearInterval(timer); },1);// call checkNext and clear interval if display done    
 } // end of headerStart
