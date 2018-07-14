@@ -27,7 +27,7 @@ function createMatrix(row,col,tableId,fixedText) {
         tableBody.appendChild(tableRow);            
         matrix.push(matrixRow);
     } // end of outer for    
-    document.getElementById(tableId).appendChild(tableBody);             
+    document.getElementById(tableId).appendChild(tableBody);                 
 } // end of createMatrix
 
 function headerStart() {    
@@ -37,7 +37,7 @@ function headerStart() {
         if (findFirstNotEmpty()===-1) return false;  
         const lastValidChar=()=>matrix[findFirstNotEmpty()].split("").map(e=>e==".").lastIndexOf(false), // search for the last index of valid character in the non empty row                    
               lights=(x,y,onOff,el=document.getElementById(`cell${x}_${y<0?0:y}`))=>
-                  onOff?el.style.color="#a5c5de":el.style.color="rgba(50, 50, 50, 0.3)";
+                  onOff?el.style.color="#a5c5de":el.style.color="rgba(50, 50, 50, 0.3)"; // Dont change colors, it migth break blinks td selectio
         lights(findFirstNotEmpty(),count-1,false);
         lights(findFirstNotEmpty(),count,true);
         if (count==lastValidChar()){
@@ -54,6 +54,16 @@ function headerStart() {
             document.getElementsByTagName("header")[0].style.animationName = "bottomBorder";
             document.getElementsByTagName("header")[0].style.WebkitAnimationName ="bottomBorder";
             document.getElementsByTagName("header")[0].style.animationDuration = "2s";
-            console.log(document.getElementsByTagName("header").className);
+            blink();
         } },1);// call checkNext and clear interval if display done    
 } // end of headerStart
+
+// the highlighted characters blinking randomly
+function blink() {
+    const selectedTds = [...document.getElementsByTagName("td")].filter(e=>window.getComputedStyle(e).color=="rgb(165, 197, 222)"); // here it breaks if color is changed
+    let count = 0, randomness =3; 
+    outerTimer = setInterval(()=>{
+        let r = Math.floor(Math.random()*randomness+1);
+        if (r === randomness) console.log(++count);
+    },200); // the general timer that blinks letters every now and then
+} // end of blink
