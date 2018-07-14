@@ -1,31 +1,41 @@
 :root {
     --darkGray : #2a2a2a;
     --darkerGray : #101012;
-    --highLight : #a5c5de;
+    --highLight : rgb(165,197,222);
+    --highLightLinear : linear-gradient(to right, rgba(165,97,222,0.5), rgba(165,197,222,1));
     --textGray : rgba(50, 50, 50, 0.3);     
 }
-    
+
+@-webkit-keyframes{
+    from {border-bottom: 2px outset transparent;}
+    to {border-bottom: 2px outset var(--highLight);}
+}
+@keyframes bottomBorder {
+    from {border-bottom: 2px outset transparent;}
+    to {border-bottom: 2px outset var(--highLight);}
+}
+
 body {
     background-color: var(--darkGray);
     color: var(--textGray);
-    font-size: 3vw;
-    font-weight: bolder;
+    font-size: 3vw;    
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
 }
 
-header {
+header {   
     background-color: var(--darkerGray);
-    color: var(--textGray);    
+    border-bottom: 2px outset transparent;
+    color: var(--textGray);      
     margin: 0;        
     text-shadow: -1px -1px 3px rgba(0,0,0,0.5);   
 }
 
 #letters {
-    line-height: 2vw;
+    line-height: 2vw;        
 }
 
 #letters > td {
     margin: 0;    
     padding: 0;        
-}
+} 
