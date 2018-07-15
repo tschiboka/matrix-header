@@ -61,13 +61,13 @@ function headerStart() {
 // the highlighted characters blinking randomly
 function blink() {
     const selectedTds = [...document.getElementsByTagName("td")].filter(e=>window.getComputedStyle(e).color=="rgb(165, 197, 222)"); // here it breaks if color is changed
-    let count = 0, randomness =3; 
-    outerTimer = setInterval(()=>{
+    let count = 0, randomness =5; 
+    const outerTimer = setInterval(()=>{
         let r = Math.floor(Math.random()*randomness+1);
-        if (r === randomness) {
-            console.log(++count);
+        if (r === randomness) {            
             let randomTd = selectedTds[Math.floor(Math.random()*selectedTds.length)];
-            console.log(randomTd);
+            randomTd.style.color = "rgba(50, 50, 50, 0.3)";
+            const innerTimer = setTimeout(()=>{randomTd.style.color = "rgb(165, 197, 222)"},20);
         } // end of if
     },200); // the general timer that blinks letters every now and then
 } // end of blink
