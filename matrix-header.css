@@ -1,8 +1,7 @@
 :root {
     --darkGray : #2a2a2a;
     --darkerGray : #101012;
-    --highLight : rgb(165,197,222);
-    --highLightLinear : linear-gradient(to right, rgba(165,97,222,0.5), rgba(165,197,222,1));
+    --highLight : rgb(165,197,222);    
     --textGray : rgba(50, 50, 50, 0.3);     
 }
 
