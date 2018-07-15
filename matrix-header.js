@@ -64,6 +64,10 @@ function blink() {
     let count = 0, randomness =3; 
     outerTimer = setInterval(()=>{
         let r = Math.floor(Math.random()*randomness+1);
-        if (r === randomness) console.log(++count);
+        if (r === randomness) {
+            console.log(++count);
+            let randomTd = selectedTds[Math.floor(Math.random()*selectedTds.length)];
+            console.log(randomTd);
+        } // end of if
     },200); // the general timer that blinks letters every now and then
 } // end of blink
